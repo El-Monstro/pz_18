@@ -1,0 +1,31 @@
+﻿<Window x:Class="pz_18.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:pz_18"
+        mc:Ignorable="d"
+       Title="База данных - Сервисный центр" Height="350" Width="600">
+
+    <Window.DataContext>
+        <local:MainViewModel />
+    </Window.DataContext>
+
+    <Grid>
+        <!-- Кнопка для загрузки данных из базы -->
+        <Button Content="Загрузить данные" 
+                HorizontalAlignment="Left" 
+                VerticalAlignment="Top" 
+                Margin="10" 
+                Width="150" 
+                Height="30" 
+                Command="{Binding LoadDataCommand}" />
+
+        <!-- DataGrid для отображения данных -->
+        <DataGrid Name="DataGrid" 
+                  HorizontalAlignment="Stretch" 
+                  VerticalAlignment="Stretch" 
+                  Margin="10,50,10,10"
+                  ItemsSource="{Binding Requests}" />
+    </Grid>
+</Window>
