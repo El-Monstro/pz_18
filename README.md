@@ -1,14 +1,6 @@
 CREATE DATABASE Demos
 USE Demos
 
-CREATE TABLE Users (
-    userID INT PRIMARY KEY AUTO_INCREMENT,
-    fio VARCHAR(100),
-    phone VARCHAR(20),
-    login VARCHAR(50),
-    password VARCHAR(50),
-    type VARCHAR(20)
-);
 
 CREATE TABLE Users (
     userID INT PRIMARY KEY IDENTITY(1,1),
