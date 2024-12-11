@@ -22,7 +22,6 @@ namespace PZ_18
             var addWindow = new AddEditRequestWindow();
             addWindow.ShowDialog();
 
-            // После закрытия окна добавления заявки обновим список
             if (DataContext is MainViewModel vm)
             {
                 vm.SearchRequests(null);
@@ -36,7 +35,6 @@ namespace PZ_18
                 var editWindow = new AddEditRequestWindow(selectedRequest);
                 editWindow.ShowDialog();
 
-                // После редактирования обновляем список
                 if (DataContext is MainViewModel vm)
                 {
                     vm.SearchRequests(null);
@@ -57,15 +55,13 @@ namespace PZ_18
                 {
                     using (var context = new CoreContext())
                     {
-                        // Сначала удаляем связанные комментарии
                         var comments = context.Comments.Where(c => c.RequestID == selectedRequest.RequestID).ToList();
                         context.Comments.RemoveRange(comments);
 
-                        // Затем удаляем связанные запчасти
+
                         var parts = context.RepairParts.Where(p => p.RequestID == selectedRequest.RequestID).ToList();
                         context.RepairParts.RemoveRange(parts);
 
-                        // Теперь удаляем заявку
                         context.Requests.Remove(selectedRequest);
                         context.SaveChanges();
                     }

@@ -22,7 +22,6 @@ namespace PZ_18.ViewModels
 
 		public MainViewModel()
 		{
-			// Загрузка данных из контекста (пользователи и заявки).
 			using (var context = new CoreContext())
 			{
 				Users = new ObservableCollection<User>(context.Users.Include(u => u.UserType).ToList());
